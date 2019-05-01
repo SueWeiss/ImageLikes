@@ -1,0 +1,18 @@
+﻿@using Library.Data
+@model Image
+<div class="col-md-9">
+
+    <div class="thumbnail">
+        <img class="img-responsive" src="/My_Images/@Model.ImageName" style="width: 400px;" />
+        <div class="caption-full">
+            <h4 class="pull-right">@Model.Title</h4>
+            <button class=" btn btn-success glyphicon-thumbs-up likeBtn" data-id="@Model.Id">Like</button>
+            <input class="likeAmount" type="submit" value="@Model.Likes"></input>
+            <input type="hidden"value="@Model.Id" class="imageId" />
+        </div>
+
+    </div>
+</div>
+@section scripts{
+    <script src="~/JavaScript.js"></script>
+}
