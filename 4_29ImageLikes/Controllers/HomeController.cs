@@ -56,9 +56,16 @@ namespace _4_29ImageLikes.Controllers
         [HttpPost]
         public IActionResult addLike(int Id)
         {
-            Manager mgr = new Manager(_connectionString);
-            mgr.SetLike(Id);
-            return Json(Id);
+            string Like = HttpContext.Session.GetString(Id.ToString());
+            
+            if (Like == null)
+            {
+                HttpContext.Session.SetString(Id.ToString(), Id.ToString());
+                Manager mgr = new Manager(_connectionString);
+                mgr.SetLike(Id);
+                return Json("Thank You!");
+            }
+            return Json("You have already 'Liked' this image");
         }
         [HttpPost]
         public IActionResult GetLikes(int id)

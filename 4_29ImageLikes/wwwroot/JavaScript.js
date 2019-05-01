@@ -1,5 +1,5 @@
 ﻿$(() => {
-    alert('foo');
+    //alert('foo');
     const imageId = $('.imageId').val();
 
     setInterval(() => {        
@@ -11,7 +11,8 @@
 
     $('.likeBtn').on('click', function () {
         const imageId = $(this).data('id');
-        $.post("/home/addLike", { Id: imageId }, function () {
+        $.post("/home/addLike", { Id: imageId }, function (message) {
+            alert(message)
 
         })
     })
